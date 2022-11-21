@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'consolas' , monospace;
+}
+
+body {
+    background-color: #1D1F21;
+    color: #EEEEEE;
+
+    @apply antialiased
+}
+
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #6B7280;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #C9CACC;
+}
+
+/* Global page transtions */
+
+.fade-enter-active {
+  transition: opacity 1s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+/* Custom CSS Comps */
+
+.contain {
+  @apply w-11/12 md:w-3/5 mx-auto
+}
+
+.text-border {
+  @apply bg-[#31363B] px-1 rounded-md
+}
