@@ -18,11 +18,36 @@
           >Articles</g-link
         >
       </nav>
-
       <div class="md:hidden block">
-        <app-icon icon="bars" size="lg"></app-icon>
+        <app-icon
+          @click="
+            () => {
+              showMenu = !showMenu;
+            }
+          "
+          class="cursor-pointer"
+          icon="bars"
+          size="lg"
+        ></app-icon>
       </div>
     </header>
+
+    <!-- Mobile Nav -->
+
+    <header
+      :class="[showMenu ? 'hidden' : 'fixed']"
+      class="transition ease-in duration-500 h-1/4 w-full bg-[#1D1F21] md:hidden top-28 left-0 right-0"
+    >
+      <nav
+        class="w-11/12 mx-auto flex flex-col items-end gap-3 text-green pt-5"
+      >
+        <g-link to="/">Home</g-link>
+        <g-link to="/projects/">Projects</g-link>
+        <g-link to="/articles/">Articles</g-link>
+      </nav>
+    </header>
+
+    <!-- Mobile Nav Ends -->
 
     <slot />
 
@@ -38,6 +63,20 @@
     </footer>
   </div>
 </template>
+
+<script>
+
+export default {
+
+  data() {
+
+    return {
+      showMenu: true,
+    }
+  },
+};
+</script>
+
 
 <static-query>
 query {

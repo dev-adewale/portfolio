@@ -17,17 +17,21 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #6B7280;
+  background: #1D1F21;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #C9CACC;
+  background: #6B7280;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
 }
 
 /* Global page transtions */
@@ -48,4 +52,18 @@ body {
 
 .text-border {
   @apply bg-[#31363B] px-1 rounded-md
+}
+
+/* Blog styling */
+
+strong {
+  @apply border-dotted border-2 rounded-sm px-1 border-cuppy bg-[#131313]
+}
+
+h3 {
+  @apply text-2xl font-bold decoration-cuppy underline underline-offset-8
+}
+
+pre {
+  @apply rounded-md
 }
