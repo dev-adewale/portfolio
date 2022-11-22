@@ -5,65 +5,91 @@ date: 09 Nov 2022
 tags: ["backend", "api"]
 ---
 
-In this detailed tutorial, we will be building a Rest API with **Node.js**, **Express** and **MongoDB** non-relational database. This API will expose endpoints that will allow for **CRUD** (Create, Read, Update, Delete) operations.<br></br>
+In this detailed tutorial, we will be building a Rest API with **Node.js**, **Express** and **MongoDB** non-relational database. This API will expose endpoints that will allow for **CRUD** (Create, Read, Update, Delete) operations.
+
+<br>
 
 ### #Prerequisites
+
 <br>
-To follow along with the tutorial, you'll need to have the following specified tools installed 👇:<br></br>
+
+To follow along with the tutorial, you'll need to have the following specified tools installed 👇:
+
+<br>
 
 * [Node](nodejs.org)
 * MongoDB Compass
 * A text/code editor of your choice
 * A terminal
-<br></br>
 
-Also make sure you've mastered fundamentals of the following in order to sail through smoothly:<br></br>
+<br>
+
+Also make sure you've mastered fundamentals of the following in order to sail through smoothly:
+
+<br>
 
 * Node
 * JavaScript
 * MongoDB
 * APIs
-<br></br>
 
-### #To-do lists
 <br>
 
-What we are going to build is a Rest API where user details can be stored. Information such as **Email**, **Name**, & **Phone number** will be stored with each individual user. Since this is a CRUD API, 4 types of endpoint need to be exposed.<br>
+### #To-do lists
 
-First, we will create our **GET** endpoint that will list all user details in our MongoDB database: <br></br>
+<br>
+
+What we are going to build is a Rest API where user details can be stored. Information such as **Email**, **Name**, & **Phone number** will be stored with each individual user. Since this is a CRUD API, 4 types of endpoint need to be exposed.
+
+<br>
+
+First, we will create our **GET** endpoint that will list all user details in our MongoDB database:
+
+<br>
 
 ```bash
 GET /get
 ```
 <br>
 
-We will be starting with an empty database. So, we need to create a **POST** endpoint that will allow us to add user details:<br></br>
+We will be starting with an empty database. So, we need to create a **POST** endpoint that will allow us to add user details:
+
+<br>
 
 ```bash
 POST /add
 ```
 <br>
 
-The third endpoint will be the **PATCH** method, this will allow us to update users information when we need to:<br></br>
+The third endpoint will be the **PATCH** method, this will allow us to update users information when we need to:
+
+<br>
 
 ```bash
 PATCH /update
 ````
 <br>
 
-Finally, we have to create a **DELETE** endpoint incase we have to delete every information about a user:<br></br>
+Finally, we have to create a **DELETE** endpoint incase we have to delete every information about a user:
+
+<br>
 
 ```bash
 DELETE /remove
 ```
 <br>
 
-By making these 4 endpoints, we will achieve our aim to create a CRUD API. Without wasting time further, open up any **terminal** of choice, I will be using **Git bash** terminal.<br></br>
+By making these 4 endpoints, we will achieve our aim to create a CRUD API. Without wasting time further, open up any **terminal** of choice, I will be using **Git bash** terminal.
 
-### #Creating our project
 <br>
 
-We will kick off by making a folder called **userApp** for our project. Afterwards, initialize a **package.json** file in the root by typing the **npm init -y** command.<br></br>
+### #Creating our project
+
+<br>
+
+We will kick off by making a folder called **userApp** for our project. Afterwards, initialize a **package.json** file in the root by typing the **npm init -y** command.
+
+<br>
 
 ```bash
 
@@ -88,54 +114,71 @@ Wrote to C:\Users\Adeyemi\documents\userApp\package.json:
 }
 
 ```
-<br></br>
+<br>
 
-After project initialization, we'll have to install all dependencies that will make it somewhat easy for us to build our API and it's **CRUD** endpoints. So, open your terminal again and install 👇:<br></br>
+After project initialization, we'll have to install all dependencies that will make it somewhat easy for us to build our API and it's **CRUD** endpoints. So, open your terminal again and install 👇:
+
+<br>
 
 ```bash
 npm i express mongoose --save
 ```
 <br>
 
-We have to install one more package, but to our **devDependencies** this time around:<br></br>
+We have to install one more package, but to our **devDependencies** this time around:
+
+<br>
 
 ```bash
 npm i nodemon --save-dev
 ```
 <br>
 
-Here's a breakdown of what we installed 🕵️‍♂️:<br></br>
+Here's a breakdown of what we installed 🕵️‍♂️:
+
+<br>
 
 ### #Express
+
 <br>
 
 Express is a fast, minimal and flexible **Node** web application framework. It comes with robust set of features that will allow us spin up our API **Server** without much complexity.
-<br></br>
+
+<br>
 
 ### #Mongoose
+
 <br>
 
 We installed the **mongoose** package instead of **mongodb** earlier, wondering why? It's because Mongoose is a wrapper package that provides more advanced features than using the MongoDB package.
 
 <br>
+
 Mongoose is an Object Data Modeling (ODM) library that manages relationships between data, provides schema validation, and is used to create a connection between MongoDB and the Node.js runtime environment.<br></br>
 
 ### #Nodemon
+
 <br>
 
 While installing our dependencies, **nodemon** was installed to the **devDependencies** section. Why? We really don't need this package in production, it's only useful while developing locally. Nodemon is a Node app wrapper that will watch for any file changes in our project and automatically restart our server.
-<br></br>
+
+<br>
+
 Without it, we will have to restart the server manually everytime we make changes to any file in our project folder. Yikes 😖, that will be stressful!
 
 <br>
 
 Now, let's get our hands dirty with code...
-<br></br>
 
-### #Start coding
 <br>
 
-Create a **server.js** file in the project root folder. You can name the JS file anything, it doesn't matter. This will be the entry point to our app. To start coding, open the **package.json** file and edit it like so 👇: <br></br>
+### #Start coding
+
+<br>
+
+Create a **server.js** file in the project root folder. You can name the JS file anything, it doesn't matter. This will be the entry point to our app. To start coding, open the **package.json** file and edit it like so 👇:
+
+<br>
 
 ```json
 {
@@ -161,11 +204,17 @@ Create a **server.js** file in the project root folder. You can name the JS file
 ```
 <br>
 
-What changed? If you noticed, we add a new text **"type": "module"**. This is notify the package file that we will be using **ES6** syntax whenever we're importing a package in our code. <br></br>
+What changed? If you noticed, we add a new text **"type": "module"**. This is notify the package file that we will be using **ES6** syntax whenever we're importing a package in our code.
 
-We also added a script of **"dev": "nodemon server.js"**. This will spin up our server, watch for file changes and automatically restart the server for us. <br></br>
+<br>
 
-In **server.js**, write the following code:<br></br>
+We also added a script of **"dev": "nodemon server.js"**. This will spin up our server, watch for file changes and automatically restart the server for us.
+
+<br>
+
+In **server.js**, write the following code:
+
+<br>
 
 ```javascript
 /* Import express */
@@ -402,7 +451,6 @@ To test our post endpoint, open up any API client you're using and send a POST r
 The **POST** endpoint is up, what if we have to delete a user data? Let's continue by creating a **DELETE** endpoint in the **router.js** file 👇:
 
 <br>
-
 
 ```javascript
 /* Delete method */

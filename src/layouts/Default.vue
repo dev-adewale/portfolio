@@ -20,7 +20,7 @@
       </nav>
       <div class="md:hidden block">
         <app-icon
-          @click.prevent="
+          @click="
             () => {
               showMenu = !showMenu;
             }

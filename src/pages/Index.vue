@@ -126,7 +126,7 @@
               <span class="decoration-cuppy underline underline-offset-4"
                 >MongoDB:</span
               >
-              A document database that stores data in BSON formart
+              A document database that stores data in BSON format
             </p>
           </div>
         </div>

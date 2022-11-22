@@ -28,6 +28,16 @@
   </Layout>
 </template>
 
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: "Tag ==>" + " " + this.$page.tag.title
+    }
+  },
+};
+</script>
+
 <page-query>
 query Tag ($id: ID!) {
   tag: tag (id: $id) {

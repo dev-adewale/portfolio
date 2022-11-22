@@ -6,7 +6,7 @@
 
 module.exports = {
   siteName: "Adex",
-  icon: './src/rocketbg.png',
+  icon: "./src/rocketbg.png",
 
   plugins: [
     {
@@ -22,6 +22,14 @@ module.exports = {
       options: {
         path: "./content/**/*.md",
         typeName: "Articles",
+        remark: {
+          plugins: [
+            [
+              "gridsome-plugin-remark-shiki",
+              { theme: "nord", skipInline: false },
+            ],
+          ],
+        },
 
         refs: {
           tags: {
@@ -36,9 +44,5 @@ module.exports = {
   templates: {
     Articles: "/article/:title",
     Tag: "/tag/:id",
-  },
-
-  transformers: {
-    remark: {},
   },
 };
