@@ -20,7 +20,7 @@
       </nav>
       <div class="md:hidden block">
         <app-icon
-          @click="
+          @click.prevent="
             () => {
               showMenu = !showMenu;
             }
@@ -36,10 +36,10 @@
 
     <header
       :class="[showMenu ? 'hidden' : 'fixed']"
-      class="transition ease-in duration-500 h-1/4 w-full bg-[#1D1F21] md:hidden top-28 left-0 right-0"
+      class="transition ease-in duration-500 h-32 w-full bg-[#1D1F21] md:hidden top-28 left-0 right-0"
     >
       <nav
-        class="w-11/12 mx-auto flex flex-col items-end gap-3 text-green pt-5"
+        class="w-11/12 mx-auto flex flex-col items-end gap-3 text-green pt-3"
       >
         <g-link to="/">Home</g-link>
         <g-link to="/projects/">Projects</g-link>
