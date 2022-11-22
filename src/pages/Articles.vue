@@ -1,32 +1,25 @@
 <template>
-  <Layout>
+<Layout>
     <transition name="fade" appear>
-      <main class="contain mt-14 mb-14">
-        <h2 class="text-2xl font-semibold mb-14">Posts</h2>
+        <main class="contain mt-14 mb-14">
+            <h2 class="text-2xl font-semibold mb-14">Posts</h2>
 
-        <article
-          class="flex md:flex-row flex-col md:items-center items-start md:gap-10 gap-0 md:pb-3 pb-7"
-          v-for="edge in $page.posts.edges"
-          :key="edge.node.id"
-        >
-          <p class="text-dimGreyAlt text-sl">{{ edge.node.date }}</p>
+            <article class="flex md:flex-row flex-col md:items-center items-start md:gap-10 gap-0 md:pb-3 pb-7" v-for="edge in $page.posts.edges" :key="edge.node.id">
+                <p class="text-dimGreyAlt text-sl">{{ edge.node.date }}</p>
 
-          <g-link
-            :to="edge.node.path"
-            class="text-dimGrey underline underline-offset-4"
-          >
-            {{ edge.node.title }}
-          </g-link>
-        </article>
-      </main>
+                <g-link :to="edge.node.path" class="text-dimGrey underline underline-offset-4">
+                    {{ edge.node.title }}
+                </g-link>
+            </article>
+        </main>
     </transition>
-  </Layout>
+</Layout>
 </template>
 
 <script>
 export default {
   metaInfo: {
-    title: "Articles",
+    title: "All articles 📝",
   },
 };
 </script>

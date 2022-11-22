@@ -4,15 +4,15 @@
 import DefaultLayout from '~/layouts/Default.vue'
 require('gridsome-plugin-remark-prismjs-all/themes/night-owl.css')
 
-import { faGithub, faTwitter, faDiscord, faJs, faVuejs, faGolang, faCss3 } from '@fortawesome/free-brands-svg-icons'
-import { faAt, faDatabase, faBars, faLink, faTags } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faTwitter, faDiscord, faJs, faVuejs, faGolang, faCss3, faNode } from '@fortawesome/free-brands-svg-icons'
+import { faAt, faDatabase, faBars, faLink, faTags, faEye, faCodeFork } from '@fortawesome/free-solid-svg-icons'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default function (Vue, { router, head, isClient }) {
 
-  library.add(faGithub, faTwitter, faDiscord, faJs, faVuejs, faGolang, faCss3, faAt, faDatabase, faBars, faLink, faTags)
+  library.add(faGithub, faTwitter, faDiscord, faJs, faVuejs, faGolang, faCss3, faAt, faDatabase, faNode, faBars, faLink, faTags, faEye, faCodeFork)
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
