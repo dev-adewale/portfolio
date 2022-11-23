@@ -36,7 +36,18 @@
 
     <header
       :class="[showMenu ? 'hidden' : 'fixed']"
-      class="transition ease-in duration-500 h-32 w-full bg-[#1D1F21] md:hidden top-28 left-0 right-0"
+      class="
+        transition
+        ease-in
+        duration-500
+        h-32
+        w-full
+        bg-[#1D1F21]
+        md:hidden
+        top-28
+        left-0
+        right-0
+      "
     >
       <nav
         class="w-11/12 mx-auto flex flex-col items-end gap-3 text-green pt-3"
@@ -54,25 +65,22 @@
     <footer class="contain flex justify-between mb-5 text-sl text-dimGreyAlt">
       <p>Copyright © 2022 🚀</p>
 
-      <nav class="flex gap-2">
-        <a class="border-r-2 border-solid border-dimGreyAlt pr-3" href=""
-          >RSS</a
-        >
-        <a href="">Sitemap</a>
+      <nav>
+        <a href="/rss.xml" target="_blank">
+          RSS
+          <app-icon icon="rss" size="sm"></app-icon>
+        </a>
       </nav>
     </footer>
   </div>
 </template>
 
 <script>
-
 export default {
-
   data() {
-
     return {
       showMenu: true,
-    }
+    };
   },
 };
 </script>

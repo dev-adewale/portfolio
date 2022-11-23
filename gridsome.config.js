@@ -9,6 +9,29 @@ module.exports = {
   icon: "./src/rocketbg.png",
 
   plugins: [
+    // Feed
+    {
+      use: 'gridsome-plugin-rss',
+      options: {
+        contentTypeName: 'Articles',
+        feedOptions: {
+          title: 'Adex.xyz articles feed',
+          description: 'A full stack develop blog covering web technology topics',
+          feed_url: 'https://adex.onrender.com/rss.xml',
+          site_url: 'https://adex.onrender.com/'
+        },
+        feedItemOptions: node => ({
+          title: node.title,
+          url: 'https://adex.onrender.com' + node.path
+        }),
+        output: {
+          dir: './static',
+          name: 'rss.xml'
+        }
+      }
+    },
+
+    // Tailwind
     {
       use: "gridsome-plugin-tailwindcss2",
       options: {
@@ -17,6 +40,7 @@ module.exports = {
       },
     },
 
+    // Source file
     {
       use: "@gridsome/source-filesystem",
       options: {
